@@ -1,0 +1,93 @@
+/* 타이틀 영역 스타일 */
+.about-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* 클립 아이콘과 텍스트 사이 간격 */
+  font-size: 36px;
+  font-weight: 900;
+  color: #000000;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* 클립(링크) 아이콘 스타일 */
+.title-link-icon {
+  color: #888888; /* 은은한 회색 */
+  font-size: 32px;
+  transform: rotate(45deg); /* 사진과 비슷한 각도로 회전 */
+}
+
+/* 타이틀 아래 얇은 회색 선 */
+.about-title-divider {
+  width: 250px;
+  height: 1px;
+  background-color: #dcdcdc;
+  margin: 16px auto 0;
+}
+
+/* 3열 그리드 레이아웃 */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 개별 정보 아이템 */
+.about-item {
+  display: flex;
+  align-items: center; /* 아이콘과 텍스트 수직 중앙 정렬 */
+  gap: 24px;
+}
+
+/* 아이콘 래퍼 및 색상 설정 */
+.about-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+}
+
+/* 개별 아이콘 크기 및 색상 (사진과 동일한 다크 그레이) */
+.about-icon svg {
+  font-size: 32px;
+  color: #333333; 
+}
+
+/* 텍스트 컨테이너 */
+.about-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* 라벨 (이름, 생년월일 등) */
+.about-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333333; /* 짙은 회색 */
+}
+
+/* 값 (실제 데이터) */
+.about-value {
+  font-size: 15px;
+  color: #666666; /* 연한 회색 */
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* 모바일 반응형 처리 (1열로 변경) */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 0 20px;
+  }
+}

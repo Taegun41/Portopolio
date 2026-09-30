@@ -1,0 +1,201 @@
+/* =========================================
+   7. Projects (메인/서브 분리 및 좌우 교차 확장 애니메이션)
+   ========================================= */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* 카드 공통 스타일 */
+.project-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  position: relative;
+  height: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+}
+
+.card-info-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-top { margin-bottom: 12px; }
+.card-badge { color: #fff; padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 700; }
+.card-date { font-size: 14px; color: var(--muted); margin-top: 10px; }
+.card-divider { width: 100%; height: 1px; background-color: var(--line); margin: 16px 0; }
+.card-title { font-size: 19px; font-weight: 700; color: var(--ink); margin: 0 0 12px 0; line-height: 1.4; }
+.card-bullets { margin: 0 0 16px 0; padding-left: 20px; color: var(--muted); font-size: 14px; line-height: 1.6; flex-grow: 1; }
+.card-link { display: block; border-left: 3px solid #3178c6; padding-left: 10px; color: #3178c6; font-size: 14px; margin-bottom: 16px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+
+.card-tech {
+  display: inline-block;
+  background: #fff8e6;
+  border: 1px solid #f2d184;
+  color: #8c6a20;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: auto;
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+.card-bottom-actions { display: flex; align-items: center; }
+
+.readme-btn {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.readme-btn:hover { background: var(--image-background); }
+
+
+/* =========================================
+   🌟 1행: 메인 프로젝트 (네이비 테두리 강조)
+   ========================================= */
+.main-project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+  border: 2px solid var(--accent);
+}
+
+.main-project-card:hover {
+  border-color: #1B263B;
+  box-shadow: 0 8px 24px rgba(27, 38, 59, 0.15); /* 네이비 그림자 */
+}
+
+.main-card-media {
+  background: var(--image-background);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-card-media video {
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+
+/* =========================================
+   🌟 2행 이하: 서브 프로젝트 그리드
+   ========================================= */
+.sub-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px 28px;
+}
+
+/* =========================================
+   🌟 서브 프로젝트 호버 시 일체형 네이비 테두리
+   ========================================= */
+.sub-wrapper {
+  position: relative;
+  z-index: 1;
+  transition: filter 0.3s ease;
+}
+
+.sub-wrapper:hover {
+  z-index: 100;
+  filter: drop-shadow(0 12px 24px rgba(27, 38, 59, 0.2)); /* 네이비 그림자 */
+}
+
+.sub-wrapper .project-card {
+  transition: border-color 0.3s ease, border-radius 0.3s ease;
+  box-sizing: border-box;
+}
+
+.sub-wrapper:hover .project-card {
+  border: 2px solid #1B263B;
+}
+
+@media (min-width: 769px) {
+  /* 1. 홀수(왼쪽) 카드 호버 */
+  .sub-projects-grid > .sub-wrapper:nth-child(odd):hover .project-card {
+    border-right-color: transparent; 
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .sub-projects-grid > .sub-wrapper:nth-child(odd) .video-panel {
+    left: 100%;
+    top: -2px; bottom: -2px; 
+    border-radius: 0 12px 12px 0;
+    border: 2px solid #1B263B;
+    border-left: none;
+  }
+
+  /* 2. 짝수(오른쪽) 카드 호버 */
+  .sub-projects-grid > .sub-wrapper:nth-child(even):hover .project-card {
+    border-left-color: transparent; 
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .sub-projects-grid > .sub-wrapper:nth-child(even) .video-panel {
+    right: 100%;
+    top: -2px; bottom: -2px; 
+    border-radius: 12px 0 0 12px;
+    border: 2px solid #1B263B;
+    border-right: none;
+  }
+
+  /* 영상 패널 공통 확장 동작 */
+  .sub-wrapper:hover .video-panel {
+    width: calc(100% + 40px);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .sub-wrapper:hover .video-panel video { 
+    opacity: 1; 
+  }
+}
+
+/* 🎬 시연 영상 확장 패널 기본 설정 */
+.video-panel {
+  position: absolute;
+  width: 0;
+  background: #000;
+  overflow: hidden;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+.video-panel video {
+  width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s 0.2s;
+}
+
+/* =========================================
+   📱 모바일 반응형 처리
+   ========================================= */
+@media (max-width: 768px) {
+  .main-project-card { grid-template-columns: 1fr; }
+  .main-card-media { min-height: 250px; margin-top: 20px; }
+  .sub-projects-grid { grid-template-columns: 1fr; }
+  
+  .video-panel { 
+    position: static; 
+    width: 100% !important; 
+    height: 0; 
+    margin-top: 0; 
+    opacity: 0; 
+    border-radius: 8px; 
+    transition: height 0.4s;
+  }
+  .sub-wrapper:hover .video-panel { height: 200px; margin-top: 20px; opacity: 1; }
+  .sub-wrapper:hover .video-panel video { opacity: 1; }
+}

@@ -1,0 +1,78 @@
+.skills-box {
+  background-color: #ebe7de;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--line);
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.skill-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.skill-category {
+  flex: 0 0 130px;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  padding-top: 4px;
+}
+
+.skill-category span {
+  font-size: 20px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex: 1;
+}
+
+.skill-tag {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  border: none;
+}
+
+/* 브랜드 컬러 클래스들 */
+.tag-blue { background-color: #3178c6; }
+.tag-yellow { background-color: #f7df1e; color: #333333; }
+.tag-black { background-color: #000000; }
+.tag-navy { background-color: #20232a; }
+.tag-green { background-color: #41b883; }
+.tag-lightblue { background-color: #00d8ff; color: #333333; }
+.tag-orange { background-color: #e34f26; }
+.tag-purple { background-color: #7952b3; }
+.tag-gray { background-color: #555555; }
+.tag-teal { background-color: #38b2ac; }
+.tag-yellowgreen { background-color: #84ba64; }
+.tag-red { background-color: #dc322f; }
+
+@media (max-width: 768px) {
+  .skills-box {
+    padding: 24px 20px;
+  }
+  .skill-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .skill-category {
+    flex: none;
+    padding-top: 0;
+  }
+}

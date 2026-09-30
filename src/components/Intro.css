@@ -1,0 +1,24 @@
+.intro-content {
+  max-width: 600px;
+  padding-block: 40px 20px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.intro-title {
+  font-size: clamp(32px, 4vw, 42px);
+  line-height: 1.35;
+  letter-spacing: -0.04em;
+  margin: 0 0 20px 0;
+}
+
+.introduction {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
