@@ -8,7 +8,7 @@
 
 3. 브라우저에서 http://localhost:5173 에 접속합니다.
 
-※ 배포 주소: (배포 후 여기에 URL 기재)
+※ 배포 주소: https://taegun41.github.io/Portopolio/
 
 ※ 작품 링크
    - AI 뉴스 분석 플랫폼: https://ai-news-plattform.vercel.app
