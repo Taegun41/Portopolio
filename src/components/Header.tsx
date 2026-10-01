@@ -8,8 +8,7 @@ const Header: React.FC = () => {
         <a className="site-name" href="#intro">
           박태건 <span>PORTFOLIO</span>
         </a>
-        <nav className="site-nav" aria-label="메인 네비게이션">
-          <a href="#intro">Info</a>
+        <nav className="site-nav" aria-label="메인 메뉴">
           <a href="#about">About Me</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>

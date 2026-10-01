@@ -18,6 +18,8 @@ export interface ProjectData {
 const ProjectCard: React.FC<{ project: ProjectData }> = ({ project }) => {
   const [isReadmeOpen, setIsReadmeOpen] = useState(false);
   const [isMobileActive, setIsMobileActive] = useState(false);
+  // 시연 영상 파일이 아직 없거나 불러오지 못하면 '영상 준비 중'을 표시합니다.
+  const [videoFailed, setVideoFailed] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -115,8 +117,8 @@ const ProjectCard: React.FC<{ project: ProjectData }> = ({ project }) => {
         <div className="project-card main-project-card">
           {CardInfo}
           <div className="main-card-media">
-            {project.videoSrc ? (
-              <video src={project.videoSrc} autoPlay loop muted playsInline />
+            {project.videoSrc && !videoFailed ? (
+              <video src={project.videoSrc} autoPlay loop muted playsInline onError={() => setVideoFailed(true)} />
             ) : (
               <span className="media-placeholder">영상 준비 중</span>
             )}
@@ -137,9 +139,10 @@ const ProjectCard: React.FC<{ project: ProjectData }> = ({ project }) => {
     >
       <div className="project-card">
         {CardInfo}
-        {project.videoSrc && (
+        {project.videoSrc && !videoFailed && (
           <div className="video-panel">
-            <video ref={videoRef} src={project.videoSrc} loop muted playsInline />
+            {/* preload="none": 페이지를 열 때 바로 내려받지 않고, 마우스를 올리거나 터치할 때 내려받습니다 (휴대폰 데이터 절약) */}
+            <video ref={videoRef} src={project.videoSrc} loop muted playsInline preload="none" onError={() => setVideoFailed(true)} />
           </div>
         )}
       </div>
@@ -148,4 +151,4 @@ const ProjectCard: React.FC<{ project: ProjectData }> = ({ project }) => {
   );
 };
 
-export default ProjectCard;
+export default ProjectCard;

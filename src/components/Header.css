@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(251, 250, 247, 0.92);
+  background: rgba(251, 250, 247, 0.94);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
@@ -16,7 +16,7 @@
 
 .site-name {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--ink);
   display: flex;
   align-items: center;
@@ -25,27 +25,44 @@
 
 .site-name span {
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--accent);
 }
 
 .site-nav {
   display: flex;
-  gap: 24px;
-  font-size: 14px;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* 메뉴 하나하나의 누를 수 있는 영역을 44px 이상으로 (피츠의 법칙) */
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 8px;
 }
 
 .site-nav a:hover {
   color: var(--accent);
+  background: #ece8df;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .header-inner {
-    flex-direction: column;
-    height: auto;
-    padding-block: 12px;
-    gap: 8px;
+    height: 56px;
+  }
+  .site-name span {
+    display: none;
+  }
+  .site-nav {
+    font-size: 14px;
+  }
+  .site-nav a {
+    padding: 0 8px;
   }
 }
